@@ -32,24 +32,24 @@ const useStyles = makeStyles(theme => ({
 
 const Quiz = ({ strengthQuiz }) => {
   const [quizState, setQuizState] = useState([]);
-  const [nextPages, setNextPages] = useState([1]);
+  const [nextPagesInfo, setNextPagesInfo] = useState({ 1: null });
   const classes = useStyles();
-  const [tempNextPages, setTempNextPages] = useState([]);
+  const [tempNextPages, setTempNextPages] = useState({});
 
   const clickedOptionHandler = option => {
     let updatedQuizState = [...quizState];
     const nextPage = getNextPage(option);
-    let tempNextPagesCopy = [...tempNextPages];
+    let tempNextPagesCopy = { ...tempNextPages };
     if (quizState.includes(option)) {
       updatedQuizState = updatedQuizState.filter(o => o !== option);
       if (nextPage !== 0) {
-        tempNextPagesCopy = tempNextPagesCopy.filter(n => n !== nextPage);
+        delete tempNextPagesCopy[nextPage];
       }
     } else {
       updatedQuizState.push(option);
       if (nextPage !== 0) {
         console.log(nextPage);
-        tempNextPagesCopy.push(nextPage);
+        tempNextPagesCopy[nextPage] = option;
       }
     }
     setQuizState(updatedQuizState);
@@ -58,31 +58,40 @@ const Quiz = ({ strengthQuiz }) => {
 
   const nextClickedHandler = () => {
     console.log(tempNextPages);
-    setNextPages(tempNextPages);
+    setNextPagesInfo(tempNextPages);
     setTempNextPages([]);
   };
+
+  const nextPages = Object.keys(nextPagesInfo);
+  const endOfQuiz = nextPages.length === 0;
 
   return (
     <Paper className={classes.Paper} variant='outlined'>
       <p>Skills and Interests Quiz</p>
       <List component='nav' aria-label='secondary mailbox folder'>
-        {nextPages.map(nextPage => (
-          <Box className={classes.box} key={nextPage}>
-            <div>
-              <p></p>
-              {strengthQuizQuestions[nextPage].map(option => (
-                <ListItem
-                  key={option}
-                  button
-                  selected={quizState.includes(option)}
-                  onClick={() => clickedOptionHandler(option)}
-                >
-                  <ListItemText primary={option} />
-                </ListItem>
-              ))}
-            </div>
-          </Box>
-        ))}
+        {endOfQuiz ? (
+          <p>Successfully completed!</p>
+        ) : (
+          nextPages.map(nextPage => (
+            <Box className={classes.box} key={nextPage}>
+              <div>
+                {nextPagesInfo[nextPage] != null ? (
+                  <p>Because you chose: {nextPagesInfo[nextPage]}</p>
+                ) : null}
+                {strengthQuizQuestions[nextPage].map(option => (
+                  <ListItem
+                    key={option}
+                    button
+                    selected={quizState.includes(option)}
+                    onClick={() => clickedOptionHandler(option)}
+                  >
+                    <ListItemText primary={option} />
+                  </ListItem>
+                ))}
+              </div>
+            </Box>
+          ))
+        )}
       </List>
       {/* <Button
         variant='outlined'
@@ -92,15 +101,27 @@ const Quiz = ({ strengthQuiz }) => {
       >
         Previous
       </Button> */}
-      <Button
-        variant='outlined'
-        color='primary'
-        className={classes.button}
-        onClick={() => nextClickedHandler()}
-        // endIcon={<Icon>send</Icon>}
-      >
-        Next
-      </Button>
+      {endOfQuiz ? (
+        <Button
+          variant='outlined'
+          color='primary'
+          className={classes.button}
+          onClick={() => nextClickedHandler()}
+          // endIcon={<Icon>send</Icon>}
+        >
+          Submit
+        </Button>
+      ) : (
+        <Button
+          variant='outlined'
+          color='primary'
+          className={classes.button}
+          onClick={() => nextClickedHandler()}
+          // endIcon={<Icon>send</Icon>}
+        >
+          Next
+        </Button>
+      )}
     </Paper>
   );
 };
