@@ -15,22 +15,22 @@ import Done from "../../images/done.json";
 import { TextField } from "@material-ui/core";
 import "./Org.css";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 200,
     maxWidth: 500,
-    padding: 20,
+    padding: 20
   },
   chips: {
     display: "flex",
-    flexWrap: "wrap",
+    flexWrap: "wrap"
   },
   chip: {
-    margin: 2,
+    margin: 2
   },
   noLabel: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(3)
   },
   paper: {
     position: "absolute",
@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     border: "1px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-<<<<<<< HEAD
     zIndex: 10
   },
   modal: {
@@ -47,10 +46,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center"
   }
-=======
-    zIndex: 10,
-  },
->>>>>>> 24514702eb6127777a58fd3f91c9f377bf5a661c
 }));
 
 const getModalStyle = () => {
@@ -60,7 +55,7 @@ const getModalStyle = () => {
   return {
     top: `${top}%`,
     left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+    transform: `translate(-${top}%, -${left}%)`
   };
 };
 
@@ -73,22 +68,22 @@ const Organiser = ({ uploadVolunteerActivity }) => {
     PaperProps: {
       style: {
         maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
-      },
-    },
+        width: 250
+      }
+    }
   };
   const [formState, setFormState] = useState({
     Title: null,
-    Description: null,
+    Description: null
   });
   const [selectedStrengths, setSelectedStrengths] = useState([]);
-  const handleChange = (event) => {
+  const handleChange = event => {
     const str = event.target.value;
     setSelectedStrengths(str);
   };
   const allStrengths = [];
-  Object.keys(strengthQuizQuestions).forEach((key) =>
-    strengthQuizQuestions[key].forEach((str) => allStrengths.push(str))
+  Object.keys(strengthQuizQuestions).forEach(key =>
+    strengthQuizQuestions[key].forEach(str => allStrengths.push(str))
   );
 
   const updateFormStateHandler = (field, event) => {
@@ -106,69 +101,16 @@ const Organiser = ({ uploadVolunteerActivity }) => {
     <div
       style={{
         display: "flex",
-        flexDirection: 'column',
+        flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: "center"
       }}
     >
       <div
         style={{
-          width: 400,
+          width: 400
         }}
       >
-<<<<<<< HEAD
-        Upload Volunteer Activity!
-      </ButtonBase>
-      <Modal
-        open={isUploading}
-        onClose={() => setIsUploading(false)}
-        className={classes.modal}
-      >
-        <form>
-          <TextField
-            className={classes.col}
-            name='Title'
-            label='Title'
-            variant='outlined'
-            onChange={event => updateFormStateHandler("Title", event)}
-            style={{ width: "32%" }}
-          />
-          <TextField
-            className={classes.col}
-            name='Description'
-            label='Description'
-            variant='outlined'
-            onChange={event => updateFormStateHandler("Description", event)}
-            style={{ width: "32%" }}
-          />
-          <FormControl className={[classes.formControl, classes.col].join(" ")}>
-            <InputLabel id='demo-mutiple-chip-label'>Strengths</InputLabel>
-            <Select
-              labelId='demo-mutiple-chip-label'
-              id='demo-mutiple-chip'
-              multiple
-              value={selectedStrengths}
-              onChange={handleChange}
-              input={<Input id='select-multiple-chip' />}
-              renderValue={selected => (
-                <div className={classes.chips}>
-                  {selected.map(value => (
-                    <Chip key={value} label={value} className={classes.chip} />
-                  ))}
-                </div>
-              )}
-              MenuProps={MenuProps}
-            >
-              {allStrengths.map(str => (
-                <MenuItem key={str} value={str}>
-                  {str}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <ButtonBase
-            focusRipple
-=======
         <Lottie animationData={Done} />
       </div>
       <p
@@ -179,7 +121,7 @@ const Organiser = ({ uploadVolunteerActivity }) => {
           fontStyle: "normal",
           fontWeight: "bold",
           lineHeight: "30px",
-          marginBottom: 50,
+          marginBottom: 50
         }}
       >
         You're set !
@@ -192,7 +134,7 @@ const Organiser = ({ uploadVolunteerActivity }) => {
           fontStyle: "normal",
           fontWeight: "normal",
           lineHeight: "30px",
-          marginBottom: 50,
+          marginBottom: 50
         }}
       >
         Now wait for your best candidates to apply !
@@ -212,11 +154,10 @@ const Organiser = ({ uploadVolunteerActivity }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "center"
           }}
         >
           <form
->>>>>>> 24514702eb6127777a58fd3f91c9f377bf5a661c
             style={{
               backgroundColor: "white",
               width: "70%",
@@ -225,15 +166,9 @@ const Organiser = ({ uploadVolunteerActivity }) => {
               flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
-              borderRadius: 10,
+              borderRadius: 10
             }}
           >
-<<<<<<< HEAD
-            Upload
-          </ButtonBase>
-        </form>
-      </Modal>
-=======
             <p
               style={{
                 textAlign: "center",
@@ -242,59 +177,59 @@ const Organiser = ({ uploadVolunteerActivity }) => {
                 fontStyle: "normal",
                 fontWeight: "bold",
                 lineHeight: "30px",
-                marginBottom: 50,
+                marginBottom: 50
               }}
             >
               Find your best volunteers now !
             </p>
             <TextField
-              name="Title"
-              label="Title"
-              variant="outlined"
-              onChange={(event) => updateFormStateHandler("Title", event)}
+              name='Title'
+              label='Title'
+              variant='outlined'
+              onChange={event => updateFormStateHandler("Title", event)}
               style={{
                 width: "70%",
                 marginBottom: 30,
-                borderRadius: 10,
+                borderRadius: 10
               }}
             />
             <TextField
-              name="Description"
-              label="Description"
-              variant="outlined"
-              onChange={(event) => updateFormStateHandler("Description", event)}
+              name='Description'
+              label='Description'
+              variant='outlined'
+              onChange={event => updateFormStateHandler("Description", event)}
               style={{
                 width: "70%",
 
                 borderRadius: 10,
-                marginBottom: 20,
+                marginBottom: 20
               }}
             />
             <FormControl
               className={[classes.formControl].join(" ")}
               style={{
-                borderRadius: 5,
+                borderRadius: 5
               }}
             >
               <InputLabel
-                id="demo-mutiple-chip-label"
+                id='demo-mutiple-chip-label'
                 style={{
                   padding: 10,
-                  margin: 10,
+                  margin: 10
                 }}
               >
                 Strengths
               </InputLabel>
               <Select
-                labelId="demo-mutiple-chip-label"
-                id="demo-mutiple-chip"
+                labelId='demo-mutiple-chip-label'
+                id='demo-mutiple-chip'
                 multiple
                 value={selectedStrengths}
                 onChange={handleChange}
-                input={<Input id="select-multiple-chip" />}
-                renderValue={(selected) => (
+                input={<Input id='select-multiple-chip' />}
+                renderValue={selected => (
                   <div className={classes.chips}>
-                    {selected.map((value) => (
+                    {selected.map(value => (
                       <Chip
                         key={value}
                         label={value}
@@ -305,7 +240,7 @@ const Organiser = ({ uploadVolunteerActivity }) => {
                 )}
                 MenuProps={MenuProps}
               >
-                {allStrengths.map((str) => (
+                {allStrengths.map(str => (
                   <MenuItem key={str} value={str}>
                     {str}
                   </MenuItem>
@@ -314,7 +249,7 @@ const Organiser = ({ uploadVolunteerActivity }) => {
             </FormControl>
             <ButtonBase
               focusRipple
-              className="hvr-rotate"
+              className='hvr-rotate'
               style={{
                 marginTop: 30,
                 borderRadius: 10,
@@ -324,7 +259,7 @@ const Organiser = ({ uploadVolunteerActivity }) => {
                 color: "white",
                 paddingLeft: 50,
                 paddingRight: 50,
-                fontSize: 20,
+                fontSize: 20
               }}
               onClick={() => uploadHandler()}
             >
@@ -333,18 +268,17 @@ const Organiser = ({ uploadVolunteerActivity }) => {
           </form>
         </Grid>
       </Grid>
->>>>>>> 24514702eb6127777a58fd3f91c9f377bf5a661c
     </div>
   );
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    uploadVolunteerActivity: (activity) =>
+    uploadVolunteerActivity: activity =>
       dispatch({
         type: "UPLOAD_VOLUNTEER_ACTIVITY",
-        volunteerActivity: activity,
-      }),
+        volunteerActivity: activity
+      })
   };
 };
 
