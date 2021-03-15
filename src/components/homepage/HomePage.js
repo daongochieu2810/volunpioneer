@@ -6,9 +6,11 @@ import Pets from "@material-ui/icons/Pets";
 import Nature from "@material-ui/icons/Nature";
 import School from "@material-ui/icons/SchoolRounded";
 import InNeed from "@material-ui/icons/LocalPharmacyRounded";
+import Lottie from "lottie-react";
 import { makeStyles } from "@material-ui/core/styles";
-import main_bg from "../../images/main_bg.png";
+import main_bg from "../../images/main_bg.json";
 import "./HomePage.css";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -114,7 +116,7 @@ function HomePage() {
         </Grid>
         <Grid item xs={6}>
           <div>
-            <img src={main_bg} />
+            <Lottie animationData={main_bg}/>
           </div>
         </Grid>
       </Grid>
