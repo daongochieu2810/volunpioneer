@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { NavBar } from './components/navigation/NavBar';
+import { Contacts } from './components/navigation/Contacts';
+import { About } from './components/navigation/About';
+import { Qna } from './components/navigation/Qna';
+
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router>
+        <NavBar />
+
+        <Switch>
+          <Route path="/contacts" component={Contacts} />
+          <Route path="/about" component={About} />
+          <Route path="/qna" component={Qna} />
+        </Switch>
+      </Router>
+    </React.Fragment>
   );
 }
 
