@@ -42,7 +42,7 @@ const initialState = {
       Title: "Free Tuition",
       Description:
         "The classes are mainly conducted at schools and CDAC centres which are accessible and convenient for students. CDAC Tuition Programme is offered at 50 locations islandwide. We also offer enrichment programmes such as Phonics, Espeed Chinese and Challenging Math at our CDAC Centres.Our small class size allows tutors to give more individual attention to students.",
-      Strengths: [
+      strengths: [
         "I can teach skills",
         "I am good with children",
         "I  can speak chinese"

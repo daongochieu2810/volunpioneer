@@ -10,7 +10,6 @@ import Organisation from "./components/Organiser/Organiser";
 import "./App.css";
 
 function App() {
-  localStorage.clear();
   return (
     <div>
       <React.Fragment>
