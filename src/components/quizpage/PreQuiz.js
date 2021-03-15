@@ -6,10 +6,10 @@ import { useHistory } from "react-router-dom";
 import quiz from "../../images/quiz.json";
 import "./PreQuiz.css";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-  },
+    flexGrow: 1
+  }
 }));
 
 function PreQuiz() {
@@ -21,12 +21,12 @@ function PreQuiz() {
     <div className={classes.root}>
       <Grid
         container
-        justify="center"
+        justify='center'
         style={{
           backgroundColor: "black",
           height: "80vh",
           flexDirection: "column",
-          alignItems: 'center'
+          alignItems: "center"
         }}
       >
         <p
@@ -37,7 +37,7 @@ function PreQuiz() {
             fontSize: "40px",
             fontStyle: "normal",
             fontWeight: "bold",
-            lineHeight: "47px",
+            lineHeight: "47px"
           }}
         >
           Preliminary Quiz
@@ -45,14 +45,14 @@ function PreQuiz() {
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           <Lottie
             animationData={quiz}
             style={{
               width: 500,
-              height: 200,
+              height: 200
             }}
           />
         </div>
@@ -60,28 +60,29 @@ function PreQuiz() {
           style={{
             textAlign: "center",
             color: "white",
-            width: '40%',
+            width: "40%",
             fontFamily: "Roboto",
             fontSize: "20px",
             fontStyle: "normal",
             fontWeight: "normal",
-            lineHeight: "30px",
+            lineHeight: "30px"
           }}
         >
-            This quiz is for us to understand you more and help you find suitable volunteering opportunities. The length of the quiz might vary
-            based on your answers, as the set of question is not fixed. The quiz result will be shared with organisations to obtain the best
-            activities for you!
-
+          This quiz is for us to understand you more and help you find suitable
+          volunteering opportunities. The length of the quiz might vary based on
+          your answers, as the set of question is not fixed. The quiz result
+          will be shared with organisations to obtain the best activities for
+          you!
         </p>
         <div
           style={{
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "center"
           }}
         >
           <ButtonBase
             focusRipple
-            className="hvr-pop"
+            className='hvr-pop'
             style={{
               width: 250,
               marginTop: 30,
@@ -92,8 +93,9 @@ function PreQuiz() {
               color: "black",
               paddingLeft: 50,
               paddingRight: 50,
-              fontSize: 20,
+              fontSize: 20
             }}
+            onClick={handleOnClick}
           >
             Take The Quiz!
           </ButtonBase>
