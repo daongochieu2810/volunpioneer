@@ -25,21 +25,26 @@ const useStyles = makeStyles({
 });
 
 const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
+  console.log(strengthQuiz);
+  console.log(volunteerActivities);
+
+  strengthQuiz.forEach(a => a.forEach(b => console.log(b)));
   const classes = useStyles();
   const containsAny = (arr1, arr2) => {
+    let contains = false;
     arr1.forEach(elem1 => {
       if (arr2.includes(elem1)) {
-        return true;
+        contains = true;
       }
     });
-    return false;
+    return contains;
   };
   const myActivities = volunteerActivities.filter(act =>
-    containsAny(act.strengths, strengthQuiz)
+    containsAny(act.strengths, strengthQuiz[0])
   );
   console.log(myActivities);
   return myActivities.map(activity => (
-    <Card className={classes.root} variant='outlined'>
+    <Card key={activity} className={classes.root} variant='outlined'>
       <CardContent>
         <Typography
           className={classes.title}
@@ -50,11 +55,6 @@ const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
         </Typography>
         <Typography className={classes.pos} color='textSecondary'>
           {activity.Description}
-        </Typography>
-        <Typography variant='body2' component='p'>
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
         </Typography>
       </CardContent>
       <CardActions>
