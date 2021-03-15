@@ -45,11 +45,10 @@ const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
       containsAny(act.strengths, strengthQuiz[0])
     );
     myActivitiesLen = myActivities.length;
-    console.log(myActivities);
   }
 
   return hasData ? (
-    <Grid container justify="center" spacing={4} style={{ marginTop: 30 }}>
+    <Grid container justify="center" spacing={4} style={{ marginTop: 30, display: 'flex', flexDirection: 'row' }}>
       {myActivities.map((activity) => (
         <Grid key={activity} item>
           <Card variant="outlined">
