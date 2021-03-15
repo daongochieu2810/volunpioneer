@@ -6,28 +6,28 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
-import Button from "@material-ui/core/Button";
+import ButtonBase from "@material-ui/core/ButtonBase";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import { strengthQuizQuestions, getNextPage } from "./QuizData";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   paper: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   box: {
     borderStyle: "solid",
     color: "text.primary",
     borderColor: "grey.500",
     borderWidth: "1px",
-    marginBottom: theme.spacing(2)
-  }
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 const Quiz = ({ strengthQuiz }) => {
@@ -36,12 +36,12 @@ const Quiz = ({ strengthQuiz }) => {
   const classes = useStyles();
   const [tempNextPages, setTempNextPages] = useState({});
 
-  const clickedOptionHandler = option => {
+  const clickedOptionHandler = (option) => {
     let updatedQuizState = [...quizState];
     const nextPage = getNextPage(option);
     let tempNextPagesCopy = { ...tempNextPages };
     if (quizState.includes(option)) {
-      updatedQuizState = updatedQuizState.filter(o => o !== option);
+      updatedQuizState = updatedQuizState.filter((o) => o !== option);
       if (nextPage !== 0) {
         delete tempNextPagesCopy[nextPage];
       }
@@ -66,69 +66,92 @@ const Quiz = ({ strengthQuiz }) => {
   const endOfQuiz = nextPages.length === 0;
 
   return (
-    <Paper className={classes.Paper} variant='outlined'>
-      <p>Skills and Interests Quiz</p>
-      <List component='nav' aria-label='secondary mailbox folder'>
+    <div>
+      <p
+        style={{
+          fontFamily: "Roboto",
+          fontSize: 40,
+          fontStyle: "bold",
+        }}
+      >
+        Skills and Interests Quiz
+      </p>
+      <List>
         {endOfQuiz ? (
           <p>Successfully completed!</p>
         ) : (
-          nextPages.map(nextPage => (
-            <Box className={classes.box} key={nextPage}>
-              <div>
-                {nextPagesInfo[nextPage] != null ? (
-                  <p>Because you chose: {nextPagesInfo[nextPage]}</p>
-                ) : null}
-                {strengthQuizQuestions[nextPage].map(option => (
-                  <ListItem
-                    key={option}
-                    button
-                    selected={quizState.includes(option)}
-                    onClick={() => clickedOptionHandler(option)}
-                  >
-                    <ListItemText primary={option} />
-                  </ListItem>
-                ))}
-              </div>
-            </Box>
+          nextPages.map((nextPage) => (
+            <div>
+              {nextPagesInfo[nextPage] != null ? (
+                <p
+                  style={{
+                    fontFamily: "Roboto",
+                    fontSize: 30,
+                    fontStyle: "bold",
+                  }}
+                >
+                  Because you chose: {nextPagesInfo[nextPage]}
+                </p>
+              ) : null}
+              <Box
+                key={nextPage}
+                style={{
+                  margin: 20,
+                  backgroundColor: "#EFEFEF",
+                  borderRadius: 15,
+                  padding: 20,
+                  paddingBottom: 10,
+                }}
+              >
+                <div>
+                  {strengthQuizQuestions[nextPage].map((option) => (
+                    <ListItem
+                      key={option}
+                      button
+                      style={{
+                        marginBottom: 10,
+                      }}
+                      selected={quizState.includes(option)}
+                      onClick={() => clickedOptionHandler(option)}
+                    >
+                      <ListItemText
+                        primary={option}
+                        style={{
+                          textAlign: "center",
+                        }}
+                      />
+                    </ListItem>
+                  ))}
+                </div>
+              </Box>
+            </div>
           ))
         )}
       </List>
-      {/* <Button
-        variant='outlined'
-        color='primary'
-        className={classes.button}
-        // endIcon={<Icon>send</Icon>}
+      <ButtonBase
+        focusRipple
+        style={{
+          marginTop: 30,
+          borderRadius: 10,
+          backgroundColor: "black",
+          paddingTop: 20,
+          paddingBottom: 20,
+          color: "white",
+          paddingLeft: 50,
+          paddingRight: 50,
+          fontSize: 20,
+        }}
+        onClick={() => nextClickedHandler()}
       >
-        Previous
-      </Button> */}
-      {endOfQuiz ? (
-        <Button
-          variant='outlined'
-          color='primary'
-          className={classes.button}
-          onClick={() => nextClickedHandler()}
-          // endIcon={<Icon>send</Icon>}
-        >
-          Submit
-        </Button>
-      ) : (
-        <Button
-          variant='outlined'
-          color='primary'
-          className={classes.button}
-          onClick={() => nextClickedHandler()}
-          // endIcon={<Icon>send</Icon>}
-        >
-          Next
-        </Button>
-      )}
-    </Paper>
+        {endOfQuiz ? "Submit" : "Next"}
+      </ButtonBase>
+    </div>
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    strengthQuiz: state.volunteer.strengthQuiz
+    strengthQuiz: state.volunteer.strengthQuiz,
   };
 };
 
