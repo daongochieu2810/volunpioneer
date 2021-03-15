@@ -56,7 +56,7 @@ const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
     >
       {myActivities.map(activity => (
         <Grid key={activity} item>
-          <Card style={{ maxWidth: "30%" }} variant='outlined'>
+          <Card key={activity} style={{ maxWidth: "20vw" }} variant='outlined'>
             <CardContent>
               <Typography
                 className={classes.title}
