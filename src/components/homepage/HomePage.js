@@ -1,4 +1,6 @@
+import { useCallback } from 'react';
 import { Grid, ButtonBase } from "@material-ui/core";
+import {useHistory} from 'react-router-dom';
 import CategoryCard from "../homepage/CategoryCard";
 import House from "@material-ui/icons/HomeWorkRounded";
 import Child from "@material-ui/icons/ChildFriendlyRounded";
@@ -61,6 +63,9 @@ const categories = [
 
 function HomePage() {
   const classes = useStyles();
+  const history = useHistory();
+  const handleOnClick = useCallback(() => history.push('/prequiz'), [history]);
+
   return (
     <div className={classes.root}>
       <Grid container spacing={6}>
@@ -109,6 +114,7 @@ function HomePage() {
                 paddingRight: 50,
                 fontSize: 20,
               }}
+              onClick={handleOnClick}
             >
               Volunteer
             </ButtonBase>
