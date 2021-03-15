@@ -138,7 +138,11 @@ const Organiser = ({ uploadVolunteerActivity }) => {
     </div>
   ) : (
     <div>
-      <Grid container>
+      <Grid container style={{
+        width: "100%",
+        height: "100vh",
+        flexGrow: 1
+      }}>
         <Grid item xs={6}>
           <Lottie animationData={FormAnim} />
         </Grid>
