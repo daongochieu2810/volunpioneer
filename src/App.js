@@ -6,7 +6,7 @@ import Volunteer from "./components/Volunteer/Volunteer";
 function App() {
   return (
     <div className='App'>
-      <Volunteer />
+      <Organiser />
     </div>
   );
 }

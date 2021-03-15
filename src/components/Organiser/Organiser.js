@@ -41,6 +41,11 @@ const useStyles = makeStyles(theme => ({
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     zIndex: 10
+  },
+  modal: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
 }));
 
@@ -58,7 +63,6 @@ const getModalStyle = () => {
 const Organiser = ({ uploadVolunteerActivity }) => {
   const [isUploading, setIsUploading] = useState(false);
   const classes = useStyles();
-  const modalStyle = getModalStyle();
   const ITEM_HEIGHT = 48;
   const ITEM_PADDING_TOP = 8;
   const MenuProps = {
@@ -113,7 +117,11 @@ const Organiser = ({ uploadVolunteerActivity }) => {
       >
         Upload Volunteer Activity!
       </ButtonBase>
-      <div hidden={!isUploading}>
+      <Modal
+        open={isUploading}
+        onClose={() => setIsUploading(false)}
+        className={classes.modal}
+      >
         <form>
           <TextField
             className={classes.col}
@@ -174,7 +182,7 @@ const Organiser = ({ uploadVolunteerActivity }) => {
             Upload
           </ButtonBase>
         </form>
-      </div>
+      </Modal>
     </div>
   );
 };
