@@ -9,7 +9,8 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275
+    width: "30%",
+    display: "inline-block"
   },
   bullet: {
     display: "inline-block",
@@ -39,29 +40,63 @@ const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
     });
     return contains;
   };
-  const myActivities = volunteerActivities.filter(act =>
-    containsAny(act.strengths, strengthQuiz[0])
+  let myActivities;
+  let myActivitiesLen;
+  const hasData = volunteerActivities.length !== 0 && strengthQuiz.length !== 0;
+  if (hasData) {
+    myActivities = volunteerActivities.filter(act =>
+      containsAny(act.strengths, strengthQuiz[0])
+    );
+    myActivitiesLen = myActivities.length;
+    console.log(myActivities);
+  }
+
+  return hasData ? (
+    myActivities.map(activity => (
+      <Card key={activity} className={classes.root} variant='outlined'>
+        <CardContent>
+          <Typography
+            className={classes.title}
+            color='textSecondary'
+            gutterBottom
+            variant='overline'
+          >
+            {activity.Title}
+          </Typography>
+          <br />
+          <Typography
+            className={classes.pos}
+            color='textSecondary'
+            variant='caption'
+          >
+            {activity.Description}
+          </Typography>
+          <br />
+          <Typography
+            className={classes.pos}
+            color='textSecondary'
+            variant='caption'
+          >
+            {"Strengths needed: "}
+          </Typography>
+          {activity.strengths.map((a, index) => (
+            <Typography
+              className={classes.pos}
+              color='textSecondary'
+              variant='caption'
+            >
+              {index === myActivitiesLen - 1 ? a : a + ", "}
+            </Typography>
+          ))}
+        </CardContent>
+        <CardActions>
+          <Button size='small'>Learn More</Button>
+        </CardActions>
+      </Card>
+    ))
+  ) : (
+    <p>No matching volunteer activies</p>
   );
-  console.log(myActivities);
-  return myActivities.map(activity => (
-    <Card key={activity} className={classes.root} variant='outlined'>
-      <CardContent>
-        <Typography
-          className={classes.title}
-          color='textSecondary'
-          gutterBottom
-        >
-          {activity.Title}
-        </Typography>
-        <Typography className={classes.pos} color='textSecondary'>
-          {activity.Description}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size='small'>Learn More</Button>
-      </CardActions>
-    </Card>
-  ));
 };
 
 const mapStateToProps = state => {
