@@ -28,12 +28,12 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="/" font="Arial">
+            <a href="/organisation" font="Arial">
               Organization
             </a>
           </li>
           <li>
-            <a href="/" font="Arial">
+            <a href="/volunteer" font="Arial">
               Volunteer
             </a>
           </li>
