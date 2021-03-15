@@ -11,37 +11,37 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import { strengthQuizQuestions, getNextPage } from "./QuizData";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(1)
   },
   paper: {
     padding: theme.spacing(2),
     display: "flex",
     overflow: "auto",
-    flexDirection: "column",
+    flexDirection: "column"
   },
   box: {
     borderStyle: "solid",
     color: "text.primary",
     borderColor: "grey.500",
     borderWidth: "1px",
-    marginBottom: theme.spacing(2),
-  },
+    marginBottom: theme.spacing(2)
+  }
 }));
 
-const Quiz = ({ strengthQuiz }) => {
+const Quiz = ({ strengthQuiz, uploadStrengthQuiz }) => {
   const [quizState, setQuizState] = useState([]);
   const [nextPagesInfo, setNextPagesInfo] = useState({ 1: null });
   const classes = useStyles();
   const [tempNextPages, setTempNextPages] = useState({});
 
-  const clickedOptionHandler = (option) => {
+  const clickedOptionHandler = option => {
     let updatedQuizState = [...quizState];
     const nextPage = getNextPage(option);
     let tempNextPagesCopy = { ...tempNextPages };
     if (quizState.includes(option)) {
-      updatedQuizState = updatedQuizState.filter((o) => o !== option);
+      updatedQuizState = updatedQuizState.filter(o => o !== option);
       if (nextPage !== 0) {
         delete tempNextPagesCopy[nextPage];
       }
@@ -62,6 +62,10 @@ const Quiz = ({ strengthQuiz }) => {
     setTempNextPages([]);
   };
 
+  const submitClickedHandler = () => {
+    uploadStrengthQuiz(quizState);
+  };
+
   const nextPages = Object.keys(nextPagesInfo);
   const endOfQuiz = nextPages.length === 0;
 
@@ -71,7 +75,7 @@ const Quiz = ({ strengthQuiz }) => {
         style={{
           fontFamily: "Roboto",
           fontSize: 40,
-          fontStyle: "bold",
+          fontStyle: "bold"
         }}
       >
         Skills and Interests Quiz
@@ -80,14 +84,14 @@ const Quiz = ({ strengthQuiz }) => {
         {endOfQuiz ? (
           <p>Successfully completed!</p>
         ) : (
-          nextPages.map((nextPage) => (
-            <div>
+          nextPages.map(nextPage => (
+            <div key={nextPage}>
               {nextPagesInfo[nextPage] != null ? (
                 <p
                   style={{
                     fontFamily: "Roboto",
                     fontSize: 30,
-                    fontStyle: "bold",
+                    fontStyle: "bold"
                   }}
                 >
                   Because you chose: {nextPagesInfo[nextPage]}
@@ -100,16 +104,16 @@ const Quiz = ({ strengthQuiz }) => {
                   backgroundColor: "#EFEFEF",
                   borderRadius: 15,
                   padding: 20,
-                  paddingBottom: 10,
+                  paddingBottom: 10
                 }}
               >
                 <div>
-                  {strengthQuizQuestions[nextPage].map((option) => (
+                  {strengthQuizQuestions[nextPage].map(option => (
                     <ListItem
                       key={option}
                       button
                       style={{
-                        marginBottom: 10,
+                        marginBottom: 10
                       }}
                       selected={quizState.includes(option)}
                       onClick={() => clickedOptionHandler(option)}
@@ -117,7 +121,7 @@ const Quiz = ({ strengthQuiz }) => {
                       <ListItemText
                         primary={option}
                         style={{
-                          textAlign: "center",
+                          textAlign: "center"
                         }}
                       />
                     </ListItem>
@@ -139,9 +143,11 @@ const Quiz = ({ strengthQuiz }) => {
           color: "white",
           paddingLeft: 50,
           paddingRight: 50,
-          fontSize: 20,
+          fontSize: 20
         }}
-        onClick={() => nextClickedHandler()}
+        onClick={() =>
+          endOfQuiz ? submitClickedHandler() : nextClickedHandler()
+        }
       >
         {endOfQuiz ? "Submit" : "Next"}
       </ButtonBase>
@@ -149,10 +155,17 @@ const Quiz = ({ strengthQuiz }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    strengthQuiz: state.volunteer.strengthQuiz,
+    strengthQuiz: state.volunteer.strengthQuiz
   };
 };
 
-export default connect(mapStateToProps)(Quiz);
+const mapDispatchToProps = dispatch => {
+  return {
+    uploadStrengthQuiz: quizData =>
+      dispatch({ type: "UPLOAD_STRENGTH_QUIZ", quizData: quizData })
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Quiz);

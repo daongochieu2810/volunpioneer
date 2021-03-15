@@ -10,7 +10,12 @@ const initialState = {
   pageHistory: [1, 22, 323, 324]
 };
 
-const uploadStrengthQuiz = (state, action) => {};
+const uploadStrengthQuiz = (state, action) => {
+  const updatedQuizState = [...state.strengthQuiz, action.quizData];
+  const updatedState = { ...state, ...{ strengthQuiz: updatedQuizState } };
+  console.log(updatedState);
+  return updatedState;
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
