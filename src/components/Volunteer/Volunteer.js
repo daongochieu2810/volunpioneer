@@ -41,7 +41,7 @@ const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
   const hasData = volunteerActivities.length !== 0 && strengthQuiz.length !== 0;
   if (hasData) {
     myActivities = volunteerActivities.filter(act =>
-      containsAny(act.strengths, strengthQuiz[strengthQuiz.length - 1])
+      containsAny(act.strengths, strengthQuiz)
     );
     myActivitiesLen = myActivities.length;
   }
