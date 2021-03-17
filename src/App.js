@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/navigation/NavBar";
 import HomePage from "./components/homepage/HomePage";
 import PreQuiz from "./components/quizpage/PreQuiz";
@@ -13,7 +13,7 @@ function App() {
   return (
     <div>
       <React.Fragment>
-        <Router basename='/volunpioneer'>
+        <Router basename='/volunpioneer/#'>
           <NavBar />
           <Switch>
             <Route exact path='/' component={HomePage} />

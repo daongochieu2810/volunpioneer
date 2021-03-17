@@ -1,42 +1,41 @@
 import React from "react";
 import "./navbar.scss";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className='navbar'>
+    <header className="navbar">
       <nav
-        className='navigation'
+        className="navigation"
         style={{
-          flexDirection: "row"
+          flexDirection: "row",
         }}
       >
         <ul>
           <li>
-            <Link to='/'>
+            <a href="/volunpioneer/#">
               <FavoriteRoundedIcon
                 style={{
                   color: "red",
-                  scale: 2
+                  scale: 2,
                 }}
               />
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to='/' font='Arial'>
+            <a href="/volunpioneer/#" font="Arial">
               Home
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to='/organisation' font='Arial'>
+            <a href="/volunpioneer/#/organisation" font="Arial">
               Organization
-            </Link>
+            </a>
           </li>
           <li>
-            <Link to='/volunteer' font='Arial'>
+            <a href="/volunpioneer/#/volunteer" font="Arial">
               Volunteer
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>
