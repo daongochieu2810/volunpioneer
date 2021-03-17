@@ -4,36 +4,36 @@ import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
 
 const Navbar = () => {
   return (
-    <header className="navbar">
+    <header className='navbar'>
       <nav
-        className="navigation"
+        className='navigation'
         style={{
-          flexDirection: "row",
+          flexDirection: "row"
         }}
       >
         <ul>
           <li>
-            <a href="/">
+            <a href='/'>
               <FavoriteRoundedIcon
                 style={{
                   color: "red",
-                  scale: 2,
+                  scale: 2
                 }}
               />
             </a>
           </li>
           <li>
-            <a href="/" font="Arial">
+            <a href='/volunpioneer' font='Arial'>
               Home
             </a>
           </li>
           <li>
-            <a href="/organisation" font="Arial">
+            <a href='/volunpioneer/organisation' font='Arial'>
               Organization
             </a>
           </li>
           <li>
-            <a href="/volunteer" font="Arial">
+            <a href='/volunpioneer/volunteer' font='Arial'>
               Volunteer
             </a>
           </li>
