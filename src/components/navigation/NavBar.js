@@ -13,7 +13,7 @@ const Navbar = () => {
       >
         <ul>
           <li>
-            <a href='/'>
+            <a href='/volunpioneer/#'>
               <FavoriteRoundedIcon
                 style={{
                   color: "red",
@@ -23,17 +23,17 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href='/volunpioneer' font='Arial'>
+            <a href='/volunpioneer/#' font='Arial'>
               Home
             </a>
           </li>
           <li>
-            <a href='/volunpioneer/organisation' font='Arial'>
+            <a href='/volunpioneer/#/organisation' font='Arial'>
               Organization
             </a>
           </li>
           <li>
-            <a href='/volunpioneer/volunteer' font='Arial'>
+            <a href='/volunpioneer/#/volunteer' font='Arial'>
               Volunteer
             </a>
           </li>
