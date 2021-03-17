@@ -2,7 +2,7 @@
   "name": "volunpioneer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://daongochieu2810.github.io/volunpioneer",
+  "homepage": "https://daongochieu2810.github.io/volunpioneer",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
