@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/volunpioneer/static/css/main.8367d24e.chunk.css",
-    "main.js": "/volunpioneer/static/js/main.ec7a6e8d.chunk.js",
-    "main.js.map": "/volunpioneer/static/js/main.ec7a6e8d.chunk.js.map",
+    "main.js": "/volunpioneer/static/js/main.bcc7ba12.chunk.js",
+    "main.js.map": "/volunpioneer/static/js/main.bcc7ba12.chunk.js.map",
     "runtime-main.js": "/volunpioneer/static/js/runtime-main.d804ae46.js",
     "runtime-main.js.map": "/volunpioneer/static/js/runtime-main.d804ae46.js.map",
     "static/js/2.88d9c7d0.chunk.js": "/volunpioneer/static/js/2.88d9c7d0.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.d804ae46.js",
     "static/js/2.88d9c7d0.chunk.js",
     "static/css/main.8367d24e.chunk.css",
-    "static/js/main.ec7a6e8d.chunk.js"
+    "static/js/main.bcc7ba12.chunk.js"
   ]
 }
