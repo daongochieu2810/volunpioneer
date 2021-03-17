@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
 
 function PreQuiz() {
   const classes = useStyles();
-  const history = useHistory("/volunpioneer/#");
+  const history = useHistory();
   const handleOnClick = useCallback(() => history.push("/quiz"), [history]);
 
   return (

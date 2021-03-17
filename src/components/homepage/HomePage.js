@@ -62,7 +62,7 @@ const categories = [
 
 function HomePage() {
   const classes = useStyles();
-  const history = useHistory("/volunpioneer/#");
+  const history = useHistory();
   const handleOnClick = useCallback(() => history.push("/prequiz"), [history]);
 
   return (
