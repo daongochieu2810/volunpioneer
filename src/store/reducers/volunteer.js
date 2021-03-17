@@ -11,8 +11,7 @@ const initialState = {
 };
 
 const uploadStrengthQuiz = (state, action) => {
-  const updatedQuizState = [...state.strengthQuiz, action.quizData];
-  const updatedState = { ...state, ...{ strengthQuiz: updatedQuizState } };
+  const updatedState = { ...state, ...{ strengthQuiz: action.quizData } };
   console.log(updatedState);
   return updatedState;
 };

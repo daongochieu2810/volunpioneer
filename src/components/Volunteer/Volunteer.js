@@ -26,7 +26,6 @@ const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
   console.log(strengthQuiz);
   console.log(volunteerActivities);
 
-  strengthQuiz.forEach(a => a.forEach(b => console.log(b)));
   const classes = useStyles();
   const containsAny = (arr1, arr2) => {
     let contains = false;
