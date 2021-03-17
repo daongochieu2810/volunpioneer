@@ -37,7 +37,7 @@ const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
     return contains;
   };
   let myActivities;
-  let myActivitiesLen;
+  let myActivitiesLen = 0;
   const hasData = volunteerActivities.length !== 0 && strengthQuiz.length !== 0;
   if (hasData) {
     myActivities = volunteerActivities.filter(act =>
@@ -46,7 +46,7 @@ const Volunteer = ({ strengthQuiz, volunteerActivities }) => {
     myActivitiesLen = myActivities.length;
   }
 
-  return hasData ? (
+  return hasData && myActivitiesLen > 0 ? (
     <Grid
       container
       justify='center'

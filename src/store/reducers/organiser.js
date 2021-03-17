@@ -47,6 +47,17 @@ const initialState = {
         "I am good with children",
         "I  can speak chinese"
       ]
+    },
+    {
+      Description:
+        "Other than trying to sell your items on the second hand market (think Carousell), or donating blindly to The Salvation Army Singapore, donate old items to more specialised places so that they can reach real people in need.",
+      Title: "Book Donation Fair",
+      strengths: [
+        "I can donate items/money",
+        "Books (eg textbooks, storybooks)",
+        "I can purchase new items for donation",
+        "I can donate my pre-loved items"
+      ]
     }
   ]
 };
