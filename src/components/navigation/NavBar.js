@@ -1,6 +1,7 @@
 import React from "react";
 import "./navbar.scss";
 import FavoriteRoundedIcon from "@material-ui/icons/FavoriteRounded";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -13,29 +14,29 @@ const Navbar = () => {
       >
         <ul>
           <li>
-            <a href='/'>
+            <Link to='/'>
               <FavoriteRoundedIcon
                 style={{
                   color: "red",
                   scale: 2
                 }}
               />
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='/volunpioneer' font='Arial'>
+            <Link to='/' font='Arial'>
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='/volunpioneer/organisation' font='Arial'>
+            <Link to='/organisation' font='Arial'>
               Organization
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='/volunpioneer/volunteer' font='Arial'>
+            <Link to='/volunteer' font='Arial'>
               Volunteer
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
